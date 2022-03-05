@@ -14,7 +14,7 @@ public class Passenger {
 	private double weight;
 	private char gender;
 	private int numCarryOn;
-	
+	private double height;
 	//------------------------Object----------------------------
 	public Passenger() {
 		this.name = "";
@@ -22,6 +22,7 @@ public class Passenger {
 		this.weight = 0.0;
 		this.gender = 'u';
 		this.numCarryOn = 0;
+		this.height = 0.0;
 		
 		
 	}
@@ -74,6 +75,13 @@ public class Passenger {
 	            weight = weight + amount;
 	        }
 	    }
+	//calculateBMI() : double 	//using pounds and inches BMI = ( weight * 703) / (height2) 
+	
+	public double calculateBMI() {
+	
+		double bmi = ( weight * 703) / Math.pow(height,2);
+		return calculateBMI();
+	}
 
 	    // start of getter and setter
 	    public String getName() {
