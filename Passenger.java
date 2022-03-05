@@ -178,7 +178,18 @@ public class Passenger {
 
 	    // method print details
 	    public void printDetails() {
-	        System.out.printf("Name: %20s | Year of Birth: %4d | Weight: %10.2f | Gender: %c | NumCarryOn: %2d\n"
-	                , name, birthYear, weight, gender, numCarryOn);
+	        System.out.printf("Name: %20s | Year of Birth: %4d | Weight: %10.2f |  Height: %10.2f | Gender: %c | NumCarryOn: %2d\n"
+	                , name, birthYear, weight, height, gender, numCarryOn);
+	    }
+	    //printDetails() : void		// prints Passenger attributes in the following format: 
+	//  "Name: %20s | Year of Birth: %4d | Weight: %10.2f |  Height: %10.2f | Gender: %c | NumCarryOn: %2d\n"
+	    @Override
+	    public String toString() {
+	        return "Name: %20s | Year of Birth: %4d | Weight: %10.2f | Height: %10.2f | Gender: %c | NumCarryOn: %2d\n";
+	    }
+	    
+	    @Override
+	    public boolean equals(Object o) {
+	    	
 	    }
 }
