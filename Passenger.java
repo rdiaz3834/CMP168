@@ -7,7 +7,7 @@ public class Passenger {
 	
 	
 	//----------------------------End Main----------------------------------
-	Scanner scnr = new Scanner(System.in);
+	Scanner amount = new Scanner(System.in);
 
 	private String name;
 	private int birthYear;
@@ -15,23 +15,32 @@ public class Passenger {
 	private char gender;
 	private int numCarryOn;
 	private double height;
-	//------------------------Object----------------------------
+	
+	//------------------------Default Object----------------------------
 	public Passenger() {
+		
 		this.name = "";
 		this.birthYear = 1900;
 		this.weight = 0.0;
+		this.height = 0.0;
 		this.gender = 'u';
 		this.numCarryOn = 0;
-		this.height = 0.0;
 		
 		
 	}
 	
+	
 	//-------------------------Constructor-----------------------
-	 public Passenger(String name, int birthYear, double weight, char gender, int numCarryOn) {
+	 public Passenger(String name, int birthYear, double weight, double height, char gender, int numCarryOn) {
 	        this.name = name;
 	        this.birthYear = birthYear;
+	        
 
+	        if(height < 0 ) {
+	        	this.height = -1;
+	        } else {
+	        	this.height = height;
+	        }
 	        if (weight < 0) {
 	            this.weight = -1;
 	        } else {
@@ -51,6 +60,7 @@ public class Passenger {
 	        } else {
 	            this.numCarryOn = numCarryOn;
 	        }
+	 
 	    }
 
 	    // method to calculate age
@@ -64,6 +74,7 @@ public class Passenger {
 
 	    // method gain weight
 	    public void gainWeight() {
+	    	
 	        weight = weight + 1;
 	    }
 
@@ -75,14 +86,12 @@ public class Passenger {
 	            weight = weight + amount;
 	        }
 	    }
-	//calculateBMI() : double 	//using pounds and inches BMI = ( weight * 703) / (height2) 
-	
-	public double calculateBMI() {
-	
-		double bmi = ( weight * 703) / Math.pow(height,2);
-		return calculateBMI();
-	}
+	    // method to calculate BMI using pounds and inches BMI = ( weight * 703) / (height^2) 
 
+	    public double calculateBMI() {
+	    	double result = (weight * 703) / height*height;
+	    	return calculateBMI();
+	    }
 	    // start of getter and setter
 	    public String getName() {
 	        return name;
@@ -110,6 +119,15 @@ public class Passenger {
 	        } else {
 	            this.weight = weight;
 	        }
+	    }
+	    public double getHeight() {
+	        return height;
+	    }
+
+	    public void setHeight(double height) {
+	        
+	            this.height = height;
+	        
 	    }
 
 	    public char getGender() {
@@ -160,36 +178,67 @@ public class Passenger {
 
 	    // method to loose weight
 	    public void loseWeight() {
-	        if (weight <= 0) {
-	            System.out.println("Weight cannot drop below 0");
-	        } else {
-	            weight = weight - 1;
-	        }
+	        //this.weight--;
+	    	this.weight -= weight;
 	    }
 
-	    // method to loose weight by amount
+	    public Scanner getScnr() {
+			return amount;
+		}
+
+
+		public void setScnr(Scanner amount) {
+			this.amount = amount;
+		}
+
+
+		// method to loose weight by amount
 	    public void loseWeight(double amount) {
-	        if (weight - amount < 0) {
+	        if (weight - amount <= 0) {
 	            System.out.println("Weight cannot drop below 0");
 	        } else {
-	            weight = weight - amount;
+	            this.weight = weight - amount;
 	        }
 	    }
 
 	    // method print details
 	    public void printDetails() {
 	        System.out.printf("Name: %20s | Year of Birth: %4d | Weight: %10.2f |  Height: %10.2f | Gender: %c | NumCarryOn: %2d\n"
-	                , name, birthYear, weight, height, gender, numCarryOn);
+	                , name, birthYear, height, weight, gender, numCarryOn);
 	    }
-	    //printDetails() : void		// prints Passenger attributes in the following format: 
-	//  "Name: %20s | Year of Birth: %4d | Weight: %10.2f |  Height: %10.2f | Gender: %c | NumCarryOn: %2d\n"
 	    @Override
-	    public String toString() {
-	        return "Name: %20s | Year of Birth: %4d | Weight: %10.2f | Height: %10.2f | Gender: %c | NumCarryOn: %2d\n";
-	    }
-	    
-	    @Override
-	    public boolean equals(Object o) {
+		public String toString() {
+			return "Name:               " + name + " | Year of Birth: " + birthYear + " | Weight:     " + weight
+					+ " | Height:     " + height " | Gender: " + gender + ", numCarryOn=" + numCarryOn + ", height=" + height + "]";
+		} 
+	 
+
+
+		@Override
+		public boolean equals(Object obj) {
+			if (this == obj)
+				return true;
+			if (obj == null)
+				return false;
+			if (getClass() != obj.getClass())
+				return false;
+			Passenger other = (Passenger) obj;
+			if (birthYear != other.birthYear)
+				return false;
+			if (gender != other.gender)
+				return false;
+			if (Double.doubleToLongBits(height) != Double.doubleToLongBits(other.height))
+				return false;
+			if (name == null) {
+				if (other.name != null)
+					return false;
+			} else if (!name.equals(other.name))
+				return false;
+			if (numCarryOn != other.numCarryOn)
+				return false;
+			if (Double.doubleToLongBits(weight) != Double.doubleToLongBits(other.weight))
+				return false;
+			return true;
+		}
 	    	
-	    }
 }
