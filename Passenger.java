@@ -89,8 +89,8 @@ public class Passenger {
 	    // method to calculate BMI using pounds and inches BMI = ( weight * 703) / (height^2) 
 
 	    public double calculateBMI() {
-	    	double result = (weight * 703) / height*height;
-	    	return calculateBMI();
+	    	double result = (weight * 703) / (height*height);
+	    	return result;
 	    }
 	    // start of getter and setter
 	    public String getName() {
@@ -195,13 +195,18 @@ public class Passenger {
 
 
 		// method to loose weight by amount
-	    public void loseWeight(double weight) {
-	        if (this.weight - weight <= 0) {
+	    public void loseWeight(double amount) {
+	        if (weight - amount < 0) {
 	            System.out.println("Weight cannot drop below 0");
-	            this.weight = 0;
+	            
 	        } else {
-	            this.weight = this.weight - weight;
+	            weight = weight - amount;
 	        }
+//	        if (weight + amount < 0) {
+//	            System.out.println("Weight cannot drop below 0");
+//	        } else {
+//	            weight = weight + amount;
+//	        }
 	    }
 
 	    // method print details
@@ -211,8 +216,7 @@ public class Passenger {
 	    }
 	    @Override
 		public String toString() {
-			return "Name:               " + name + ", birthYear=" + birthYear + ", weight=" + weight
-					+ ", gender=" + gender + ", numCarryOn=" + numCarryOn + ", height=" + height + "]";
+			return String.format(name + birthYear + weight + height + gender + numCarryOn +"Name: %20s | Year of Birth: %4d | Weight: %10.2f | Height: %10.2f | Gender: %c | NumCarryOn: %2d\n");
 		} 
 	 
 
