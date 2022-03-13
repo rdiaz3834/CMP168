@@ -7,7 +7,7 @@ public class Passenger {
 	
 	
 	//----------------------------End Main----------------------------------
-	Scanner amount = new Scanner(System.in);
+	Scanner scnr = new Scanner(System.in);
 
 	private String name;
 	private int birthYear;
@@ -125,9 +125,11 @@ public class Passenger {
 	    }
 
 	    public void setHeight(double height) {
-	        
+	    	 if (height < 0) {
+		            this.height = -1;
+		        } else {
 	            this.height = height;
-	        
+		        }
 	    }
 
 	    public char getGender() {
@@ -178,26 +180,27 @@ public class Passenger {
 
 	    // method to loose weight
 	    public void loseWeight() {
-	        //this.weight--;
-	    	this.weight -= weight;
+	        this.weight--;
+	    	//this.weight -= weight;
 	    }
 
 	    public Scanner getScnr() {
-			return amount;
+			return scnr;
 		}
 
 
-		public void setScnr(Scanner amount) {
-			this.amount = amount;
+		public void setScnr(Scanner scnr) {
+			this.scnr = scnr;
 		}
 
 
 		// method to loose weight by amount
-	    public void loseWeight(double amount) {
-	        if (weight - amount <= 0) {
+	    public void loseWeight(double weight) {
+	        if (this.weight - weight <= 0) {
 	            System.out.println("Weight cannot drop below 0");
+	            this.weight = 0;
 	        } else {
-	            this.weight = weight - amount;
+	            this.weight = this.weight - weight;
 	        }
 	    }
 
@@ -208,8 +211,8 @@ public class Passenger {
 	    }
 	    @Override
 		public String toString() {
-			return "Name:               " + name + " | Year of Birth: " + birthYear + " | Weight:     " + weight
-					+ " | Height:     " + height " | Gender: " + gender + ", numCarryOn=" + numCarryOn + ", height=" + height + "]";
+			return "Name:               " + name + ", birthYear=" + birthYear + ", weight=" + weight
+					+ ", gender=" + gender + ", numCarryOn=" + numCarryOn + ", height=" + height + "]";
 		} 
 	 
 
