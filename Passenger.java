@@ -180,8 +180,16 @@ public class Passenger {
 
 	    // method to loose weight
 	    public void loseWeight() {
-	        this.weight--;
-	    	//this.weight -= weight;
+	    	  if (this.weight >= 1) {
+	              this.weight = this.weight - 1;
+	    	  }
+	    	//this.weight = this.weight - weight;
+//	    	if (this.weight - weight < 0) {
+//	            System.out.println("Weight cannot drop below 0");
+//	            this.weight = + weight;
+//	        } else {
+//	            weight --;
+//	        }
 	    }
 
 	    public Scanner getScnr() {
@@ -216,7 +224,8 @@ public class Passenger {
 	    }
 	    @Override
 		public String toString() {
-			return String.format(name + birthYear + weight + height + gender + numCarryOn +"Name: %20s | Year of Birth: %4d | Weight: %10.2f | Height: %10.2f | Gender: %c | NumCarryOn: %2d\n");
+			return String.format("Name: %20s | Year of Birth: %4d | Weight: %10.2f | Height: %10.2f | Gender: %c | NumCarryOn: %2d\n"
+				, name, birthYear, weight, height, gender, numCarryOn);
 		} 
 	 
 
