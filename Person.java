@@ -15,7 +15,7 @@ public class Person extends Passenger {
 			this.numOffspring = numOffspring;
 		}
 		
-		Person(String name, int birthYear, double weight, double height,
+		public Person(String name, int birthYear, double weight, double height,
 				char gender, int numCarryOn, int numOffspring) {
 			
 				super(name, birthYear, weight, height, gender, numCarryOn);
@@ -41,8 +41,13 @@ public class Person extends Passenger {
 		
 
 		@Override
-		public String toString() {
-		return super.toString()+" "+String.format("Person: Number of offspring: %4d\n ",numOffspring);
+		public String toString()
+		{
+		String s = String.format(
+		"Name: %20s | Year of Birth: %4d | Weight: %10.2f | Height: %10.2f | Gender: %10c | Number of Carry On: %10d",
+		getName(), getBirthYear(), getWeight(), getHeight(), getGender(), getNumCarryOn()
+		);
+		return s;
 		}
 
 		@Override
