@@ -5,7 +5,7 @@ public class Food {
 	private int calories;
 	
 	public Food(String name, int calories) {
-		super();
+		super(); //unnecessary
 		this.name = name;
 		this.calories = calories;
 	}
